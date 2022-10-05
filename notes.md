@@ -15,3 +15,22 @@
 Always use ‘terraform fmt -diff’ to check and format your Terraform configuration files before you commit and push them.
     terraform fmt -check
     tterraform fmt or terraform fmt -diff
+
+## Practice 5: Avoid Hard Coding Resources
+Avoid the following and use variables.tf instead
+
+resource “aws_instance” “my_example” {
+  ami           = “ami-005de95e8ff495156”
+  instance_type = “t2.micro”
+  tags = {
+    Name = “instance-1”
+  }
+}
+
+## Practice 6: Follow Naming Convention
+Set certain standards or norms within your team for naming resources and follow them at all times.  
+
+- Instead of – (dash), use _ (underscore) everywhere (in resource names, data source names, variable names, outputs, etc.).
+- Use lowercase letters and numbers whenever possible.
+- When it comes to names, single nouns should always be used.
+- Use -(dash) inside arguments and in locations where the value will be visible to a human (e.g.:, name of EC2 instance, name of RDS instance).
