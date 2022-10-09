@@ -1,5 +1,5 @@
 variable "instance_ami" {
-  description = "Value of the AMI ID for the EC2 instance"
+  description = "Value of the AMI ID for the EC2 instance ubuntu-bionic-18.04"
   type        = string
   default     = "ami-005de95e8ff495156"
 }
@@ -10,8 +10,14 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "instance_name" {
+variable "instance_name_1" {
   description = "Value of the Name Tag for the EC2 instance"
   type        = string
   default     = "instance-1"
+}
+
+variable "instance_name_2" {
+  description = "Value of the Name Tag for the EC2 instance"
+  type        = string
+  default     = "instance-2"
 }
