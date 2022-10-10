@@ -29,3 +29,14 @@ module "website_s3_bucket" {
     Environment = "test"
   }
 }
+
+module "website_s3_bucket_2" {
+  source = "./modules/aws-s3-static-website-bucket"
+
+  bucket_name = "clickittech-terraform-best-practices-2"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "test"
+  }
+}
