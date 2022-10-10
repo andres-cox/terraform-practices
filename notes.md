@@ -52,3 +52,40 @@ Begin writing your setup.
 Organize and encapsulate your code using local modules.
 Find relevant modules by searching the public Terraform Registry.
 Share modules with your team after they’ve been published.
+
+## Practice 9: Run Terraform Command with var-file
+Maintain multiple .tfvars files with the definition of variables so that you can pass the required file with var-file flag to the ‘terraform plan’ or ‘terraform apply’ command.
+
+Once you have one or more.tfvars files, you can use the -var-file flag to direct Terraform as to which file it should use to supply input variables to the Terraform command.
+
+## Practice 10: Manage Terraform State on a Remote Storage
+The state of Terraform is divided into two parts: remote state and state locking. Terraform saves state by default in a file called terraform.tfstate on your local machine. 
+This does the job for personal projects, but when it comes to Terraform group projects, using a local file becomes complicated seeing as each user must ensure that they have the most recent state data before running Terraform and that no one else is running Terraform at the same time.
+
+When you’re working on a project with multiple users, you should always use Terraform backends to save the state file in a shared remote store.
+
+## Practice 11: Locking Remote State
+When two or more users operate on the infrastructure at the same time, they may run into issues with resource creation seeing as there may arise a situation where another process is executed before the current state is completed.
+
+In such a situation, if your backend supports it, Terraform will lock your state for any operations that potentially write state.
+
+Always use state locking when using a remote backend to store your Terraform state.
+
+## Practice 12: Backup State Files
+The status of the infrastructure is kept in a file named terraform.tfstate.Terraform.tfstate.backup also contains a backup of the previous state.
+
+If you’re using a remote backend like AWS S3 Bucket, versioning on the S3 bucket is highly encouraged. This way, your state file looks like it’s corrupted or in an incorrect state, and the bucket supports bucket versioning, you may be able to recover by restoring a previous version of the state file.
+
+Always enable versioning on your remote backend storage in case you need to recover from unexpected failures.
+
+## Practice 13: Manipulate Terraform State Through Terraform Commands Only
+Modifying state data outside of a normal ‘terraform plan’ or ‘terraform apply’ operation may lead to Terraform losing track of controlled resources. In light of the foregoing, we recommend using the Terraform CLI, a more secure option, which provides commands for inspecting state, forcing re-creation, moving resources, and disaster recovery. [More Info](https://www.terraform.io/cli/state)
+
+Always manipulate terraform state using terraform CLI and avoid making manual changes in the state file.
+
+## Practice 14: Generate README for each Module with Input and Output Variables
+There are several stages on the road to automation. Some are simpler than others and documentation is one of the least well-known stages. 
+
+We will be diving into a terraform-docs utility which automatically generates a README.md so that you can avoid having to manually write it for input variables and outputs. Click [here](https://github.com/terraform-docs/terraform-docs) to learn more about the utility. 
+
+You must have a self-explanatory README.md as a part of all your Terraform projects.

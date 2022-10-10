@@ -26,3 +26,6 @@ copy-files-s3:
 delete-files-s3:
 # aws s3 rm s3://$(terraform output -raw s3_bucket_domain)/ --recursive
 	aws s3 rm s3://clickittech-terraform-best-practices/ --recursive
+
+create-readme:
+	terraform-docs markdown table --output-file README.md --output-mode replace modules/aws-s3-static-website-bucket/

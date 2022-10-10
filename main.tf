@@ -22,21 +22,21 @@ resource "aws_instance" "instance_example_2" {
 module "website_s3_bucket" {
   source = "./modules/aws-s3-static-website-bucket"
 
-  bucket_name = "clickittech-terraform-best-practices"
+  bucket_name = var.website_s3_bucket_1_name
 
   tags = {
-    Terraform   = "true"
-    Environment = "test"
+    Terraform   = var.terraform
+    Environment = var.environment
   }
 }
 
 module "website_s3_bucket_2" {
   source = "./modules/aws-s3-static-website-bucket"
 
-  bucket_name = "clickittech-terraform-best-practices-2"
+  bucket_name = var.website_s3_bucket_2_name
 
   tags = {
-    Terraform   = "true"
-    Environment = "test"
+    Terraform   = var.terraform
+    Environment = var.environment
   }
 }
