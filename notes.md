@@ -89,3 +89,23 @@ There are several stages on the road to automation. Some are simpler than others
 We will be diving into a terraform-docs utility which automatically generates a README.md so that you can avoid having to manually write it for input variables and outputs. Click [here](https://github.com/terraform-docs/terraform-docs) to learn more about the utility. 
 
 You must have a self-explanatory README.md as a part of all your Terraform projects.
+
+## Practice 15: Take Advantage of Built-in Functions
+Terraform has a lot of built-in functions that you can call on within expressions to alter and combine variables, ranging from math operations to file manipulation.
+
+It is to be noted that the Terraform language does not support user-defined functions and therefore, only the built-in functions are accessible to use.
+
+The Terraform console command allows you to experiment with the behavior of Terraform’s built-in functions from the Terraform expression console. 
+
+Use Terraform’s built-in functions to manipulate values and strings within your Terraform configuration, perform mathematical computations, and execute other tasks.
+
+Let’s execute the “terraform console” command and try some functions. 
+  max(11, 12, 1)
+  min(11, 12, 1)
+  lower(“DEVOPS”)
+  upper(“devops”)
+  concat([“devops”, “terraform”], [“best”, “practices”])
+  length(“devops”)
+  base64encode(“devops”)
+  base64decode(“ZGV2b3Bz”)
+  timestamp()

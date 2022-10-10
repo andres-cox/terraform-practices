@@ -41,3 +41,14 @@ variable "environment" {
   description = "Value of the Environment Tag for the S3 bucket"
   type        = string
 }
+
+variable "ssh_public_key_path" {
+  description = "local path of id_rsa.pub"
+  type        = string
+}
+
+variable "aws_key_name" {
+  description = "aws key for instances"
+  type        = string
+  default     = "key-demo"
+}

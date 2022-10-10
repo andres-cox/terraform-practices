@@ -16,6 +16,9 @@ apply:
 destroy:
 	terraform destroy -auto-approve
 
+console:
+	terraform console
+
 list-instances:
 	aws ec2 describe-instances --query "Reservations[].Instances[].InstanceId"
 

@@ -1,9 +1,16 @@
+resource "aws_key_pair" "aws_key_demo" {
+  key_name   = var.aws_key_name
+  public_key = file(var.ssh_public_key_path)
+}
+
 resource "aws_instance" "instance_example_1" {
   ami           = var.instance_ami
   instance_type = var.instance_type
   tags = {
     Name = var.instance_name_1
   }
+
+  key_name = aws_key_pair.aws_key_demo.key_name
 }
 
 resource "aws_instance" "instance_example_2" {
@@ -17,6 +24,8 @@ resource "aws_instance" "instance_example_2" {
     command    = "echo The IP address of the Server is ${self.private_ip}"
     on_failure = continue
   }
+
+  key_name = aws_key_pair.aws_key_demo.key_name
 }
 
 module "website_s3_bucket" {
