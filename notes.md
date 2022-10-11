@@ -109,3 +109,14 @@ Let’s execute the “terraform console” command and try some functions.
   base64encode(“devops”)
   base64decode(“ZGV2b3Bz”)
   timestamp()
+
+## Practice 16: Use Workspaces
+Workspaces are nothing but different instances of state data that can be used from the same working directory, which allow you to manage numerous non-overlapping resource groups with the same configuration. Furthermore, you can use ${terraform.workspace} to include the name of the current workspace in your Terraform configuration.
+
+Make use of Terraform workspaces to create multiple environments like Dev, QA, UAT, Prod, and more using the same Terraform configuration files and saving the state files for each environment in the same backend.
+
+terraform workspace list 
+terraform workspace new dev
+terraform workspace list 
+terraform workspace show
+terraform workspace select dev
