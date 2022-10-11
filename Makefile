@@ -71,3 +71,10 @@ apply-prod:
 
 destroy-prod:
 	terraform destroy --var-file="prod.tfvars" -auto-approve
+
+# analize tool for IAC
+install-checkov:
+	pip3 install checkov
+
+analize:
+	checkov --directory .
