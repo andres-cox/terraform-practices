@@ -120,3 +120,45 @@ terraform workspace new dev
 terraform workspace list 
 terraform workspace show
 terraform workspace select dev
+
+## Practice 17: Avoid Storing Credentials in the Terraform Code
+Do not store sensitive information in Terraform configuration files, instead use Secret Management Systems like [HashiCorp Vault](https://www.vaultproject.io/), [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) and [AWS Param Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html). 
+
+## Practice 18: Use Terraform Import
+Existing infrastructure is imported using the ‘terraform import’ command, which allows you to bring resources that you’ve provisioned with another method under Terraform administration. This is an excellent technique to gradually migrate infrastructure to Terraform or to ensure that you will be able to utilize Terraform in the future. To import a resource, you must create a resource block for it in your configuration and give it a name that Terraform will recognize.
+
+Even if you have resources that were provisioned manually, import them into Terraform. This way, you’ll be able to use Terraform to manage these resources in the future and throughout their lifecycle.
+
+## Practice 19: Automate your Deployment with a CI / CD Pipeline
+Running Terraform locally implies that all dependencies are in place: Terraform is installed and available on the local machine, and providers are kept in the .terraform directory. This is not the case when you move to stateless pipelines. One of the most frequent solutions is to use a Docker image with a Terraform binary. 
+
+Terraform defines infrastructure as code, therefore there’s no reason not to follow software development best practices. Validating planned infrastructure changes, testing infrastructure early in the development process, and implementing continuous delivery make as much sense for infrastructure as it does for application code. In our opinion, the Terraform and CI/CD integration is one of the must-have Terraform best practices to keep your organization up and running.
+
+Decide on whether you want to store your Terraform Configuration in a separate repository or combine it with your application code and have a CI/CD pipeline in place to create the infrastructure. 
+
+## Practice 20: Stay Up to Date
+​​The Terraform development community is quite active and new functions are being released on a regular basis. When Terraform releases a major new function, we suggest that you start working with the most recent version. Otherwise, if you skip numerous major releases, upgrading becomes quite difficult.  
+
+Always update your Terraform version and code upon major releases.
+
+## Practice 21: Pin your Terraform and provider version
+As the functionality of the provider can change over time because each plugin for a provider has its own set of available versions, each provider dependency you define should have a version constraint specified in the version argument so that Terraform can choose a single version per provider that all modules are compatible with. Although Terraform will accept any version of the provider as compatible if the version argument is not included as the version argument is optional, we highly recommend that you provide a version limitation for each provider on which your module depends and specify a provider version is one of the Terraform Best Practices.
+
+Always set required_providers version and Terraform required_version in the terraform{} configuration block.
+
+## Practice 22: Validate your Terraform Code
+The goal of building infrastructure as code (IaC) with Terraform is to manage and deploy infrastructure with reliability while utilizing best practices. In order to identify and address problems as early in the development process as feasible, the ‘terraform validate’ command verifies the configuration files in a directory, referring exclusively to the configuration. 
+
+Always run the ‘terraform validate’ command while you are working on writing Terraform configuration files and make it a habit to identify and address problems as early as possible.
+
+## Practice 23: Use Checkov to analyze your Terraform code
+Misconfigurations in the Terraform templates used to build the infrastructure pose serious production concerns because security is a key component of all cloud architecture frameworks. And this is where [Checkov](https://www.checkov.io/) steps in to save the day.
+
+Checkov is a static code analysis tool for checking infrastructure as code (IaC) files or your Terraform configuration files for configuration errors that could cause security or compliance issues. Checkov has more than 750 preconfigured rules to look for typical misconfiguration problems. After you use Checkov to scan the entire Terraform code, you’ll be able to see which tests were successful, which were unsuccessful, and what you can do to fix the problems.
+
+You should test your Terraform code just like you would any other piece of code; hence a tool like Checkov is essential and recommended.
+
+## Practice 24: Use tflint to find possible errors and enforce best practices
+TFLint is a linter that examines your Terraform code for potential errors, best practices, etc. Before errors occur during a Terraform run, it will also assist in identifying provider-specific problems. TFLint assists Major Cloud providers in identifying potential issues like as illegal instance types, alerts about deprecated syntax or unnecessary declarations, and enforces standard practices and naming rules. Hence, it is important and recommended to test your Terraform code using a linter called TFLint.
+
+To check for potential errors within your Terraform code and enforce best practices, you should consider a linter like TFLint.

@@ -19,6 +19,9 @@ destroy:
 console:
 	terraform console
 
+validate:
+	terraform validate
+
 list-instances:
 	aws ec2 describe-instances --query "Reservations[].Instances[].InstanceId"
 
