@@ -78,3 +78,12 @@ install-checkov:
 
 analize:
 	checkov --directory .
+
+tflint:
+	tflint
+
+tflint-dev:
+	tflint --var-file=dev.tfvars
+
+tflint-prod:
+	tflint --var-file=prod.tfvars
